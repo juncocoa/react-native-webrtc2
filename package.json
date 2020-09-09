@@ -1,0 +1,23 @@
+{
+  "name": "react-native-webrtc2",
+  "version": "1.84.0",
+  "description": "WebRTC for React Native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native-webrtc",
+    "webrtc"
+  ],
+  "author": "juncocoa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juncocoa/react-native-webrtc2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/juncocoa/react-native-webrtc2/issues"
+  },
+  "homepage": "https://github.com/juncocoa/react-native-webrtc2#readme"
+}
