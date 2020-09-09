@@ -3,7 +3,7 @@
 [![React Native Version](https://img.shields.io/badge/react--native-latest-blue.svg?style=flat-square)](http://facebook.github.io/react-native/releases)
 [![npm version](https://badge.fury.io/js/react-native-webrtc2.svg)](https://badge.fury.io/js/react-native-webrtc2)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-webrtc2.svg?maxAge=2592000)](https://img.shields.io/npm/dm/react-native-webrtc.svg2?maxAge=2592000)
-
+$\color{#e06459}{setDirection}$
 用于 React Native 的 WebRTC 模块
 - 支持 iOS / Android（plan-b 模式：W3C 建议弃用）.
 - 支持 Video / Audio / Data Channels.
