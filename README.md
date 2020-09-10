@@ -2,7 +2,7 @@
 
 [![React Native Version](https://img.shields.io/badge/react--native-latest-blue.svg?style=flat-square)](http://facebook.github.io/react-native/releases)
 [![npm version](https://badge.fury.io/js/react-native-webrtc2.svg)](https://badge.fury.io/js/react-native-webrtc2)
-[![npm downloads](https://img.shields.io/npm/dm/react-native-webrtc2.svg?maxAge=2592000)](https://img.shields.io/npm/dm/react-native-webrtc.svg2?maxAge=2592000)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-webrtc2.svg?maxAge=2592000)](https://img.shields.io/npm/dm/react-native-webrtc2.svg?maxAge=2592000)
 
 用于 React Native 的 WebRTC 模块
 - 支持 iOS / Android（plan-b 模式：W3C 建议弃用）.
@@ -48,7 +48,7 @@
 现在，请先看下图，WebRTC 认证、协议握手流程图（其中需要 信令服务器，媒体服务器[ STUN、TURN ]）
 ![image](http://z1.027cgb.com/632122/communicationTopology.png)
 
-开发、测试 可以用 [信令服务器](https://github.com/juncocoa/react-native-webrtc-server)，使用socket.io 加房间方式。（仅限开发测试，正式运营，需要自己写信令服务器 和 压力测试）
+这儿有个 [信令服务器](https://github.com/juncocoa/react-native-webrtc-server) 可用于 开发、测试，使用 socket.io 加房间方式。（仅开发、测试，正式运营，需要自己写信令服务器 和 压力测试）
 
 现在，您可以像在浏览器中一样使用WebRTC。在你的 `index.ios.js`/`index.android.js`, 您可以在 WebRTC 项目中 导入 RTCPeerConnection，RTCSessionDescription 等。
 
@@ -185,7 +185,7 @@ this.state.videoTransceiver.setDirection("recvonly")
 从版本 1.67 开始，将本地视频轨道的启用状态设置为 `false`, t时，摄像机将关闭，但该轨道将保持活动状态。 将其重新设置为 `true` 将重新启用相机。
 
 #### RTCPeerConnection.addTransceiver('audio' | 'video' | MediaStreamTrack, init)
-添加收发器，会自动添加轨道（addTrack），不需手动添加，一个收发器，对应一个轨道，同时拥有（RTCRtpSender 和 RTCRtpReceiver）两个对象，可以使用 <font color=#e06459>setDirection</font> 方法设置收发方向。
+添加收发器，会自动添加轨道（addTrack），不需手动添加，一个收发器，对应一个轨道，同时拥有（RTCRtpSender 和 RTCRtpReceiver）两个对象，可以使用 <span style="color:#e06459">setDirection</span> 方法设置收发方向。
 * （Promise）返回：收发器对象（RTCRtpTransceiver）
 ```js
 for (var i = 0; i < stream.getTracks().length; i++) {
