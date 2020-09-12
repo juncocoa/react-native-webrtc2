@@ -152,6 +152,17 @@ class GetUserMediaImpl {
         return private_ == null ? null : private_.track;
     }
 
+    MediaStreamTrack getTrackByType(String type) {
+        for (String key : tracks.keySet()){
+            TrackPrivate private_ = tracks.get(key);
+
+            if(private_.track.kind().equalsIgnoreCase(type)){
+                return private_.track;
+            }
+        }
+        return null;
+    }
+
     /**
      * Implements {@code getUserMedia}. Note that at this point constraints have
      * been normalized and permissions have been granted. The constraints only
@@ -199,11 +210,8 @@ class GetUserMediaImpl {
 
             if (track instanceof AudioTrack) {
                 mediaStream.addTrack((AudioTrack) track);
-
-                Test.addAudioTrack(track);
             } else {
                 mediaStream.addTrack((VideoTrack) track);
-                Test.addVideoTrack(track);
             }
 
             WritableMap track_ = Arguments.createMap();

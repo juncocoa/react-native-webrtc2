@@ -10,6 +10,11 @@
 - 仅 Android 版支持: Transceiver API（unified-plan 模式：W3C 建议使用）.
 
 **NOTE** 对于 Expo 用户：除非您退出，否则此插件将不起作用。
+![wanWYd](https://s1.ax1x.com/2020/09/12/wanWYd.png)
+![wanRFH](https://s1.ax1x.com/2020/09/12/wanRFH.jpg)
+![wauoC9](https://s1.ax1x.com/2020/09/12/wauoC9.jpg)
+![wau54J](https://s1.ax1x.com/2020/09/12/wau54J.jpg)
+
 ## 感谢开源项目
 - 感谢 [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) 提供基础架构 [M84](https://github.com/jitsi/webrtc/commit/dc40d5cc81e8fe9aa1cd78a38ee8bb9e91ec49a0) 版本
 - 感谢 openland 作者 [react-native-webrtc：openland](https://github.com/openland/react-native-webrtc) 提供收发器 API 支持
@@ -46,7 +51,7 @@
 
 ## 使用
 现在，请先看下图，WebRTC 认证、协议握手流程图（其中需要 信令服务器，媒体服务器[ STUN、TURN ]）
-![image](http://z1.027cgb.com/632122/communicationTopology.png)
+![certification](https://s1.ax1x.com/2020/09/12/wakGU1.png)
 
 这儿有个 [信令服务器](https://github.com/juncocoa/react-native-webrtc-server) 可用于 开发、测试，使用 socket.io 加房间方式。（仅开发、测试，正式运营，需要自己写信令服务器 和 压力测试）
 
@@ -114,8 +119,15 @@ pc.onicecandidate = function (event) {
   // send event.candidate to peer
 };
 
-// 也支持 setRemoteDescription, createAnswer, addIceCandidate, addTransceiver, onnegotiationneeded, oniceconnectionstatechange, onsignalingstatechange, onaddstream , ontrack
+// 支持的事件
+// onnegotiationneeded, oniceconnectionstatechange, onsignalingstatechange, onicecandidate
+// onaddstream, onremovestream, ontrack, ondatachannel
 
+// 支持的方法
+//setRemoteDescription, createAnswer,addIceCandidate, addTransceiver, setDirection, getRtpSenders
+//addStream, removeStream, addTrack, removeTrack, replaceTrack, stop
+
+//并且支持 Data Channel
 ```
 ### 收发器介绍（ Transceiver API ）
 收发器方向，一共有四种：sendrecv、sendonly、recvonly、inactive( ``提示：会导致 C++ 销毁收发器，销毁后不能使用 setDirection(方向)`` )
@@ -129,7 +141,7 @@ pc.addTransceiver('audio' | 'video' | MediaStreamTrack, {direction: 'sendrecv'})
 //从而控制：麦克风静音，关闭远程摄像头 等
 this.state.videoTransceiver.setDirection("recvonly")
 ```
-![image](http://z1.027cgb.com/632122/direction.jpg)
+![direction](https://s1.ax1x.com/2020/09/12/wak8ER.png)
 ### RTCView
 
 但是，渲染视频流应以 React 方式使用。

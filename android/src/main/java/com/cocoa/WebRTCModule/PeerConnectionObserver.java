@@ -564,14 +564,23 @@ class PeerConnectionObserver implements PeerConnection.Observer {
                     videoTrackAdapters.addAdapter(streamReactTag, (VideoTrack) track);
 
                     if(transceiver.getSender().track() == null){
-                        transceiver.getSender().setTrack(Test.getVideoTrack(), true);
-                        transceiver.setDirection(RtpTransceiver.RtpTransceiverDirection.SEND_RECV);
-                        this.onRenegotiationNeeded();
+                        MediaStreamTrack videoTrack = webRTCModule.getLocalTrackByType("video");
+
+                        if(videoTrack != null){
+                            transceiver.getSender().setTrack(videoTrack, false);
+                            transceiver.setDirection(RtpTransceiver.RtpTransceiverDirection.SEND_RECV);
+                            int i = id;
+                            //this.onRenegotiationNeeded();
+                        }
                     }
                 }else {
                     if(transceiver.getSender().track() == null) {
-                        transceiver.getSender().setTrack(Test.getAudioTrack(), true);
-                        transceiver.setDirection(RtpTransceiver.RtpTransceiverDirection.SEND_RECV);
+                        MediaStreamTrack audioTrack = webRTCModule.getLocalTrackByType("audio");
+
+                        if(audioTrack != null){
+                            transceiver.getSender().setTrack(audioTrack, false);
+                            transceiver.setDirection(RtpTransceiver.RtpTransceiverDirection.SEND_RECV);
+                        }
                     }
                 }
 

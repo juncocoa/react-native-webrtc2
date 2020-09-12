@@ -469,6 +469,10 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
         return getUserMediaImpl.getTrack(trackId);
     }
 
+    MediaStreamTrack getLocalTrackByType(String type) {
+        return getUserMediaImpl.getTrackByType(type);
+    }
+
     private static MediaStreamTrack getLocalTrack(
             MediaStream localStream,
             String trackId) {
@@ -1435,8 +1439,8 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
                 try {
                     transceiver = pco.getTransceiver(transceiverId);
                     //显示进度框，延迟等待（1 秒）
-                    if(isShow == true)
-                        this.showProgressDialog(kind, direction);
+                    if(isShow == true){  this.showProgressDialog(kind, direction); }
+
                     RtpTransceiver.RtpTransceiverDirection tempDirection = this.parseDirection(direction);
                     transceiver.setDirection(tempDirection);
 
@@ -1444,37 +1448,20 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
                     res.putString("id", transceiverId);
                     res.putMap("state", this.serializeState(id));
                     callback.invoke(true, res);
-                    //暂定此代码
-                    if(pco.isUnifiedPlan == true){
-                        PeerConnectionObserver pco1 = mPeerConnectionObservers.get(id + 1);
-                        if(pco1 != null){
-                            List<RtpTransceiver> list = pco1.getPeerConnection().getTransceivers();
-                            for (int i = 0;i< list.size(); i++){
-                                String str1 = list.get(i).getSender().track().kind();
 
-                                if(str1.equalsIgnoreCase(kind) == true){
-                                    list.get(i).setDirection(tempDirection);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if(isShow == true)
-                        this.delayedClose();
+                    if(isShow == true){ this.delayedClose(); }
                 }catch (Error e){
                     if(transceiver == null){
                         callback.invoke(false, "transceiver not found");
                     }else {
                         callback.invoke(false, this.serializeDirection(transceiver.getDirection()));
                     }
-                    if(isShow == true)
-                        this.delayedClose();
+                    if(isShow == true){ this.delayedClose(); }
                 }
             } else {
                 Log.d(TAG, "peerConnectionTransceiverSetDirection() peerConnection is null");
                 callback.invoke(false, "peerConnection is null");
-                if(isShow == true)
-                    this.delayedClose();
+                if(isShow == true){ this.delayedClose(); }
             }
         }
     }
