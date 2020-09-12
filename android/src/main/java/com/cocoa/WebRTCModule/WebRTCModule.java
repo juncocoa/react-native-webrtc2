@@ -1438,7 +1438,7 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
                 RtpTransceiver transceiver = null;
                 try {
                     transceiver = pco.getTransceiver(transceiverId);
-                    //显示进度框，延迟等待（1 秒）
+                    //显示进度框，延迟等待（2 秒）
                     if(isShow == true){  this.showProgressDialog(kind, direction); }
 
                     RtpTransceiver.RtpTransceiverDirection tempDirection = this.parseDirection(direction);

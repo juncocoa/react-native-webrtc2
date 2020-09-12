@@ -1,6 +1,6 @@
 {
   "name": "react-native-webrtc2",
-  "version": "1.84.2",
+  "version": "1.84.3",
   "description": "WebRTC for React Native",
   "main": "index.js",
   "scripts": {
