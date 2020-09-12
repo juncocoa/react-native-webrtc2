@@ -11,6 +11,7 @@
 
 **NOTE** 对于 Expo 用户：除非您退出，否则此插件将不起作用。
 ![wanWYd](https://s1.ax1x.com/2020/09/12/wanWYd.png)
+![waKax1](https://s1.ax1x.com/2020/09/12/waKax1.jpg)
 ![wanRFH](https://s1.ax1x.com/2020/09/12/wanRFH.jpg)
 ![wauoC9](https://s1.ax1x.com/2020/09/12/wauoC9.jpg)
 ![wau54J](https://s1.ax1x.com/2020/09/12/wau54J.jpg)
