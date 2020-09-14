@@ -12,7 +12,6 @@ import java.util.UUID;
 
 import androidx.annotation.Nullable;
 
-import android.transition.Transition;
 import android.util.Base64;
 import android.util.Log;
 import android.util.SparseArray;
@@ -34,7 +33,6 @@ import org.webrtc.RtpReceiver;
 import org.webrtc.RtpSender;
 import org.webrtc.RtpTransceiver;
 //end
-import org.webrtc.StatsObserver;
 import org.webrtc.StatsReport;
 import org.webrtc.VideoTrack;
 
@@ -569,8 +567,7 @@ class PeerConnectionObserver implements PeerConnection.Observer {
                         if(videoTrack != null){
                             transceiver.getSender().setTrack(videoTrack, false);
                             transceiver.setDirection(RtpTransceiver.RtpTransceiverDirection.SEND_RECV);
-                            int i = id;
-                            //this.onRenegotiationNeeded();
+                            this.onRenegotiationNeeded();
                         }
                     }
                 }else {

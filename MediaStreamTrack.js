@@ -105,7 +105,9 @@ class MediaStreamTrack extends EventTarget(MEDIA_STREAM_TRACK_EVENTS) {
   getSettings() {
     throw new Error('Not implemented.');
   }
-
+  toURL(){
+    return this.id;
+  }
   release() {
     WebRTCModule.mediaStreamTrackRelease(this.id);
   }

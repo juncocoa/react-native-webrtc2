@@ -145,9 +145,7 @@ this.state.videoTransceiver.setDirection("recvonly")
 ![direction](https://s1.ax1x.com/2020/09/12/wak8ER.png)
 ### RTCView
 
-但是，渲染视频流应以 React 方式使用。
-
-渲染 RTCView.
+但是，渲染视频流应以 React 方式使用（e.g）。
 
 ```javascript
 //使用 sdpSemantics: plan-b -> addStream(MediaStream) 下的 toURL 方法(是一个 UUID)
@@ -155,9 +153,15 @@ this.state.videoTransceiver.setDirection("recvonly")
 
 //使用 sdpSemantics: unified-plan -> addTrack(MediaStreamTrack) outStream 是一个 UUID)
 //推荐使用（实验室功能，可控制 收发器 方向）
-<RTCView streamURL={this.state.outStream}/>
-`or 通用写法（Universal）`
-<RTCView streamURL={(typeof(this.state.outStream) === "string")?this.state.outStream:this.state.outStream.toURL()}/>
+<RTCView streamURL={this.state.videoTrack.toURL()}/>
+
+//媒体流 和 媒体轨道，都集成 toURL 方法，无需刻意区分（e.g）。
+pc.ontrack = function(event){
+  //如果是视频，才渲染给 RTCView
+  if(event.track.kind === "video"){
+    that.setState({videoTrack: event.track});
+  }
+}
 ```
 
 | 属性名称                           | 类型             | 默认值                   | 描述                                                                                                                                |
@@ -195,7 +199,7 @@ this.state.videoTransceiver.setDirection("recvonly")
 #### VideoTrack.enabled
 `此项不适用于 unified-plan 模式`
 
-从版本 1.67 开始，将本地视频轨道的启用状态设置为 `false`, t时，摄像机将关闭，但该轨道将保持活动状态。 将其重新设置为 `true` 将重新启用相机。
+从版本 1.67 开始，将本地视频轨道的启用状态设置为 `false` 时，摄像机将关闭，但该轨道将保持活动状态。 将其重新设置为 `true` 将重新启用相机。
 
 #### RTCPeerConnection.addTransceiver('audio' | 'video' | MediaStreamTrack, init)
 添加收发器，会自动添加轨道（addTrack），不需手动添加，一个收发器，对应一个轨道，同时拥有（RTCRtpSender 和 RTCRtpReceiver）两个对象，可以使用 <span style="color:#e06459">setDirection</span> 方法设置收发方向。
@@ -216,6 +220,7 @@ for (var i = 0; i < stream.getTracks().length; i++) {
     var mediaStreamTrack = new MediaStreamTrack(info);
 
     //direction：sendrecv 发送接收，sendonly 只发送，recvonly 只接收，inactive 不发送不接收，未激活
+    //建议用 mediaStreamTrack 方式，添加收发器。
     pc.addTransceiver(mediaStreamTrack, {direction: 'sendrecv'}).then((rtpTransceiver)=>{
       this.state.rtpTransceiver = rtpTransceiver;
       //this.state.rtpTransceiver.setDirection("sendrecv")
@@ -223,6 +228,12 @@ for (var i = 0; i < stream.getTracks().length; i++) {
     })
     'or' //audio, video
     pc.addTransceiver('audio', {direction: 'sendrecv'})
+
+    //用 audio, video 这种方式，反复关闭连接，在进入可能会有连接不上，可在添加收发器后
+    //加入这句代码（addTrack）保证每次能连接上去，如未出现，可忽略。
+    for (const track of stream.getTracks()) {
+      pc.addTrack(track);
+    }
 }
 ```
 
@@ -248,12 +259,6 @@ that.getLocalStream(false, (stream) => {
     pc = new RTCPeerConnection(configuration);
 
     if(sdpSemantics === "unified-plan"){
-        //这个循环可省略，写了也不会出错
-        for (const track of stream.getTracks()) {
-          pc.addTrack(track).then((result) => {
-            console.log("RtpSender：", result);
-          });
-        }
         //添加收发器，会自动添加轨道
         pc.addTransceiver("audio", {direction: 'sendrecv'})
         .then((res)=>{
@@ -265,6 +270,13 @@ that.getLocalStream(false, (stream) => {
           that.state.videoTransceiver = res;
           console.log("添加收发器（视频轨）：", res);
         })
+
+        //加入这句代码（addTrack）保证每次能连接上去，如未出现，可忽略。
+        for (const track of stream.getTracks()) {
+          pc.addTrack(track).then((result) => {
+            console.log("RtpSender：", result);
+          });
+        }
     }
 })
 ```
