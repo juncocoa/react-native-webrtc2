@@ -9,12 +9,11 @@
 1-1.) in Xcode: Right click `Libraries` ➜ `Add Files to [project]`  
 1-2.) choose `node_modules/react-native-webrtc2/ios/RCTWebRTC.xcodeproj` then `Add`  
 1-3.) also add `node_modules/react-native-webrtc2/ios/WebRTC.framework` to project root or anywhere you want:  
-
-![Picture 4](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/doc_install_xcode_add_xcodeproject.png)
+![wf3o9O](https://s1.ax1x.com/2020/09/17/wf3o9O.png)
 
 1-4.) you will ended up with structure like:  
 
-![Picture 4](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/doc_install_xcode_file_structure.png)
+![wf3WH1](https://s1.ax1x.com/2020/09/17/wf3WH1.png)
 
 ## iOS Podfile
 
@@ -38,7 +37,7 @@ platform :ios, '10.0'
 2-2.) edit BOTH `Framework Search Paths` and `Library Search Paths`  
 2-3.) add path on BOTH sections with: `$(SRCROOT)/../node_modules/react-native-webrtc2/ios` with `recursive`  
 
-![Picture 4](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/doc_install_xcode_search_path.png)
+![wf354K](https://s1.ax1x.com/2020/09/17/wf354K.png)
 
 ## Step 3. Change General Setting and Embed Framework
 
@@ -46,7 +45,7 @@ platform :ios, '10.0'
 3-2.) change `Deployment Target` to `8.0`  
 3-3.) add `Embedded Binaries` like below:  
 
-![Picture 4](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/doc_install_xcode_embed_framework.png)
+![wf34N6](https://s1.ax1x.com/2020/09/17/wf34N6.png)
 
 
 ## Step 4. Link/Include Necessary Libraries
@@ -69,7 +68,7 @@ libc.tbd
 libc++.tbd
 libsqlite3.tbd
 ```
-![Picture 4](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/doc_install_xcode_link_libraries.png)
+![wf3hAx](https://s1.ax1x.com/2020/09/17/wf3hAx.png)
 4-5.) Under `Build setting` set `Dead Code Stripping` to `No` also under `Build Options` set `Enable Bitcode` to `No` as well  
 
 

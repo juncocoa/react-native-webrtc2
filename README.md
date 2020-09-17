@@ -47,8 +47,8 @@
 
 ## 安装
 
-- [iOS](https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/iOSInstallation.md)
-- [Android](https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/AndroidInstallation.md)
+- [iOS](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/iOSInstallation.md)
+- [Android](https://github.com/juncocoa/react-native-webrtc2/blob/master/Documentation/AndroidInstallation.md)
 
 ## 使用
 现在，请先看下图，WebRTC 认证、协议握手流程图（其中需要 信令服务器，媒体服务器[ STUN、TURN ]）
@@ -71,7 +71,7 @@ import {
   MediaStreamTrack,
   mediaDevices,
   registerGlobals
-} from 'react-native-webrtc';
+} from 'react-native-webrtc2';
 ```
 关于使用 RTCPeerConnection，RTCSessionDescription 和 RTCIceCandidate 的任何内容都类似于浏览器。 支持大多数 WebRTC API，请参阅 [Mozilla Document](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection).
 
@@ -190,7 +190,7 @@ pc.ontrack = function(event){
 * `window.RTCRtpReceiver`
 * `window.RTCRtpSender`
 
-这儿提供了一些全局变量，以帮助你像 Web 浏览器一样使用 WebRTC，同时 WebRTC JavaScript libraries 将更好的和 react-native-webrtc (native code) 通讯。
+这儿提供了一些全局变量，以帮助你像 Web 浏览器一样使用 WebRTC，同时 WebRTC JavaScript libraries 将更好的和 react-native-webrtc2 (native code) 通讯。
 
 #### MediaStreamTrack.prototype.switchCamera()
 
