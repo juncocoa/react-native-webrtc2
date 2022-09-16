@@ -315,12 +315,9 @@ that.getLocalStream(false, (stream) => {
 
 使用 [react-native-callkeep](https://github.com/react-native-webrtc/react-native-callkeep) 在 iOS 上使用 Callkit 或在 Android 上使用连接服务，以使 webrtc 应用程序具有本机拨号程序。
 
-## 赞助商
-该存储库没有获得赞助的计划。（以后可以由合作者讨论）。 如果您想为解决某些错误或获得某些功能而赏金，可以随意打开一个添加 `[BOUNTY]` 标题中的类别。 添加其他赏金网站链接，例如 [this](https://www.bountysource.com) 会更好。
+### 发展过程
+该代码库最初是由创建的 [Wan Huang Yang](https://github.com/react-native-webrtc/react-native-webrtc)，后经过 [Openland 组织](https://github.com/openland/react-native-webrtc) 加入收发器，再由作者本人，修复 bug 添加一些 API，完成单元测试。
 
-## 创作者
-该代码库最初是由创建的 [Wan Huang Yang](https://github.com/react-native-webrtc/react-native-webrtc)，后经过 [Openland 组织](https://github.com/openland/react-native-webrtc) 加入收发器，再由作者本人，修复 bug 添加一些 API，单元测试。
-
-### 协议（License）
-
-MIT
+### 捐赠（Donate）
+<img src="https://camo.githubusercontent.com/61ea2757c07e7f367707f297b06022bf0e6724e8efb86b6aab0b9cc0946951a9/68747470733a2f2f73312e617831782e636f6d2f323032322f30392f31362f767a775944672e6a7067" title="支付宝扫一扫" data-canonical-src="https://s1.ax1x.com/2022/09/16/vzwYDg.jpg" style="max-width: 360px; width: 360px;">
+感谢您的捐赠，后续会继续升级 API，让 RTC 更加稳定，流畅。
